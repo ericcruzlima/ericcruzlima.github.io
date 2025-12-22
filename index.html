@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Eric Lima</title>
+    <title>Eric Cruz Lima - Portfolio</title>
+    <meta name="description"
+        content="Eric Cruz Lima - Tech Advisor | Liderança & Inovação em Software. Especialista em GIS, Cloud e Gestão de Equipes Técnicas.">
+    <meta name="keywords"
+        content="Eric Cruz Lima, CTO, Technical Leader, Software Engineer, GIS, Geoprocessamento, Cloud, Docker, BI, N8N, Automation, AI, VR">
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* Variáveis de Cor */
         :root {
-            --bg-dark: #111827;
-            --bg-medium: #1f2937;
-            --bg-light: #374151;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --accent-primary: #22d3ee; /* ciano 400 */
-            --accent-secondary: #06b6d4; /* ciano 500 */
-            --vapor-pink: #f472b6; /* pink 400 */
-            --vapor-purple: #a78bfa; /* violet 400 */
+            --bg-dark: #070b14;
+            --bg-medium: #0f172a;
+            --bg-light: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            /* azul 500 */
+            --accent-secondary: #0ea5e9;
+            /* ciano 500 */
             --accent-gradient: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            --dev-color: #3b82f6;
+            --cto-color: #6366f1;
+            /* indigo */
         }
 
         /* Estilos Globais */
@@ -33,245 +44,979 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Section */
-        .hero-background { background-color: var(--bg-medium); background-image: radial-gradient(circle at 1px 1px, var(--bg-light) 1px, transparent 0); background-size: 20px 20px; position: relative; overflow: hidden; }
-        .hero-background::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, rgba(34, 211, 238, 0) 60%); animation: rotateGlow 15s linear infinite; z-index: 0; }
-        @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .hero-content { position: relative; z-index: 2; }
-
-        /* Container da Imagem no Hero */
-        .hero-image-container { position: absolute; top: -15%; right: -35%; width: 110%; height: 140%; z-index: 1; opacity: 0.8; pointer-events: none; }
-        #hero-photo { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center center; }
-
-        /* Ícones Font Awesome */
-        .hero-content i.fa-solid, .hero-content i.fa-brands,
-        .contact-section i.fa-solid, .contact-section i.fa-brands,
-        #idiomas i.fa-solid,
-        .footer i.fa-solid {
-             margin-right: 0.4em; width: 1.1em; text-align: center;
+        /* Navigation Bar */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(7, 11, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        /* Ícones Sociais/Contato no Hero */
-        .social-icon i.fa-brands,
-        .social-icon i.fa-solid {
-            width: 1.5rem; height: 1.5rem; margin-right: 0;
-            transition: transform 0.3s ease, color 0.3s ease;
-            font-size: 1.5rem;
+
+        /* Toggle Switch Customization */
+        .toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .toggle-wrapper .active {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-primary);
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px var(--accent-primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Profile Specific Refinements */
+        .profile-cto .cto-highlight {
+            color: var(--accent-primary);
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .profile-dev .dev-highlight {
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .profile-cto .dev-highlight,
+        .profile-dev .cto-highlight {
+            color: inherit;
+            font-weight: inherit;
+        }
+
+        /* Skills specific logic */
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+
+        .profile-cto .skill-tag[data-priority="cto"] {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.05);
+        }
+
+        .profile-dev .skill-tag[data-priority="dev"] {
+            border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section Redesign */
+        .hero-background {
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 32px 32px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Badge Customization */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-secondary);
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* Logo EC */
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        /* Buttons Redesign */
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Transição de Conteúdo */
+        #hero-description,
+        #hero-badge-text {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .content-fading {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .highlight-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
             line-height: 1;
         }
-        .social-icon:hover i.fa-brands,
-        .social-icon:hover i.fa-solid {
-             transform: scale(1.2) rotate(-10deg); color: var(--accent-primary);
+
+        .highlight-item p {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Philosophy Card */
+        .philosophy-grid {
+            margin-top: -2rem;
+            margin-bottom: 4rem;
+        }
+
+        .philosophy-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .philosophy-card h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .philosophy-item i {
+            color: #10b981;
+            /* green 500 */
+            font-size: 1.25rem;
+            margin-top: 2px;
+        }
+
+        .philosophy-item p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .philosophy-item strong {
+            color: var(--text-primary);
         }
 
         /* Títulos de Seção */
-        .section-title { font-size: 2.25rem; font-weight: 700; margin-bottom: 1.5rem; display: inline-block; position: relative; padding-bottom: 0.5rem; color: var(--text-primary); }
-        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 4px; background: var(--accent-gradient); border-radius: 2px; }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
 
         /* Timeline */
-        .timeline-item { position: relative; padding-left: 5rem; padding-bottom: 2.5rem; border-left: 2px solid var(--bg-light); }
-        .timeline-item:last-child { padding-bottom: 0; border-image: linear-gradient(to top, var(--bg-dark), var(--bg-light)) 1; border-image-slice: 1; border-left-style: solid; border-left-width: 2px; }
-        .timeline-point { position: absolute; left: -0.6rem; top: 0.15rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; background-color: var(--accent-primary); border: 3px solid var(--bg-dark); transition: transform 0.3s ease; z-index: 2; }
-        .timeline-item:hover .timeline-point { transform: scale(1.2); }
-        .timeline-item h3 { color: var(--accent-primary); }
-        .timeline-item p { color: var(--text-secondary); }
-        .timeline-item ul { color: var(--text-primary); list-style-position: outside; padding-left: 1.25rem; }
-        .timeline-item li { margin-bottom: 0.5rem; }
+        .timeline-item {
+            position: relative;
+            padding-left: 5rem;
+            padding-bottom: 2.5rem;
+            border-left: 2px solid var(--bg-light);
+        }
 
-        .timeline-label { position: absolute; left: -1.8rem; top: 40%; transform: rotate(-90deg) translateX(-50%); transform-origin: center left; white-space: nowrap; font-size: 1.375rem; font-weight: 600; letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase; opacity: 0.7; z-index: 1; transition: opacity 0.3s ease, color 0.3s ease; }
-        .timeline-item:hover .timeline-label { opacity: 1; color: var(--accent-primary); }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+            border-image: linear-gradient(to top, var(--bg-dark), var(--bg-light)) 1;
+            border-image-slice: 1;
+            border-left-style: solid;
+            border-left-width: 2px;
+        }
+
+        .timeline-point {
+            position: absolute;
+            left: -0.6rem;
+            top: 0.15rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            border: 3px solid var(--bg-dark);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .timeline-item:hover .timeline-point {
+            transform: scale(1.2);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-primary);
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+        }
+
+        .timeline-item ul {
+            color: var(--text-primary);
+            list-style-position: outside;
+            padding-left: 1.25rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-label {
+            position: absolute;
+            left: 1.2rem;
+            top: 40%;
+            transform: rotate(-90deg) translateX(-50%);
+            transform-origin: center left;
+            white-space: nowrap;
+            font-size: 1.375rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            opacity: 0.7;
+            z-index: 1;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-label {
+            opacity: 1;
+            color: var(--accent-primary);
+        }
 
         /* Estilo Hard Skills */
-        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-top: 2rem; }
-        .skill-tag { display: inline-flex; align-items: center; background-color: var(--bg-medium); color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.2rem; border-radius: 2rem; border: 1px solid var(--bg-light); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: default; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
-        .skill-tag i { color: var(--accent-secondary); margin-right: 0.6em; width: 1.1em; height: 1.1em; opacity: 0.8; transition: all 0.3s ease; text-align: center; line-height: 1; }
-        .skill-tag:hover { background-color: var(--accent-primary); color: var(--bg-dark); border-color: var(--accent-secondary); transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 16px rgba(34, 211, 238, 0.25); }
-        .skill-tag:hover i { color: var(--bg-dark); opacity: 1; transform: rotate(-10deg); }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bg-medium);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            border: 1px solid var(--bg-light);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: default;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-tag i {
+            color: var(--accent-secondary);
+            margin-right: 0.6em;
+            width: 1.1em;
+            height: 1.1em;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-primary);
+            color: var(--bg-dark);
+            border-color: var(--accent-secondary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(34, 211, 238, 0.25);
+        }
+
+        .skill-tag:hover i {
+            color: var(--bg-dark);
+            opacity: 1;
+            transform: rotate(-10deg);
+        }
 
         /* Cards de Formação */
-        .education-card { background-color: var(--bg-medium); border-radius: 0.75rem; padding: 1.25rem; transition: all 0.3s ease; border-left: 4px solid var(--accent-secondary); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); }
-        .education-card:hover { transform: translateX(5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); border-left-color: var(--accent-primary); }
-        .education-card h3 { color: var(--text-primary); }
-        .education-card ul { color: var(--text-secondary); }
-        .education-card ul a { color: var(--accent-primary); text-decoration: underline; text-decoration-color: var(--accent-secondary); text-underline-offset: 3px; transition: color 0.3s ease, text-decoration-color 0.3s ease; }
-        .education-card ul a:hover { color: var(--accent-secondary); text-decoration-color: var(--accent-primary); }
+        .education-card {
+            background-color: var(--bg-medium);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-secondary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            border-left-color: var(--accent-primary);
+        }
+
+        .education-card h3 {
+            color: var(--text-primary);
+        }
+
+        .education-card ul {
+            color: var(--text-secondary);
+        }
+
+        .education-card ul a {
+            color: var(--accent-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-secondary);
+            text-underline-offset: 3px;
+            transition: color 0.3s ease, text-decoration-color 0.3s ease;
+        }
+
+        .education-card ul a:hover {
+            color: var(--accent-secondary);
+            text-decoration-color: var(--accent-primary);
+        }
 
         /* Seção de Contato */
-        .contact-section { background: linear-gradient(135deg, var(--bg-medium) 0%, var(--bg-dark) 100%); border-radius: 0.75rem; padding: 2.5rem 1.5rem; border: 1px solid var(--bg-light); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
-        .contact-button { background: var(--accent-gradient); color: var(--bg-dark); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: all 0.3s ease; display: inline-flex; align-items: center; box-shadow: 0 4px 10px rgba(34, 211, 238, 0.3); }
-        .contact-button:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(34, 211, 238, 0.4); }
-        .contact-button i { margin-right: 0.6em; }
-        .contact-link { color: var(--text-secondary); transition: color 0.3s ease; display: inline-flex; align-items: center; }
-        .contact-link:hover { color: var(--accent-primary); }
-        .contact-link i { color: var(--text-secondary); transition: color 0.3s ease, transform 0.3s ease; width: 1.1em; text-align: center; margin-right: 0.3em; }
-        .contact-link:hover i { color: var(--accent-primary); transform: scale(1.1); }
+        .contact-section {
+            background: linear-gradient(135deg, var(--bg-medium) 0%, var(--bg-dark) 100%);
+            border-radius: 0.75rem;
+            padding: 2.5rem 1.5rem;
+            border: 1px solid var(--bg-light);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-button {
+            background: var(--accent-gradient);
+            color: var(--bg-dark);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(34, 211, 238, 0.3);
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(34, 211, 238, 0.4);
+        }
+
+        .contact-button i {
+            margin-right: 0.6em;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .contact-link i {
+            color: var(--text-secondary);
+            transition: color 0.3s ease, transform 0.3s ease;
+            width: 1.1em;
+            text-align: center;
+            margin-right: 0.3em;
+        }
+
+        .contact-link:hover i {
+            color: var(--accent-primary);
+            transform: scale(1.1);
+        }
 
         /* Rodapé */
-        .footer { background-color: var(--bg-medium); color: var(--text-secondary); padding: 1.5rem 1rem; margin-top: 4rem; border-top: 1px solid var(--bg-light); }
-        .footer a { color: var(--accent-primary); transition: color 0.3s ease; }
-        .footer a:hover { color: var(--accent-secondary); text-decoration: underline; }
-        .footer i.fa-heart { vertical-align: baseline; }
+        .footer {
+            background-color: var(--bg-medium);
+            color: var(--text-secondary);
+            padding: 1.5rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--bg-light);
+        }
+
+        .footer a {
+            color: var(--accent-primary);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        .footer i.fa-heart {
+            vertical-align: baseline;
+        }
 
         /* Classe para elementos animados (ScrollReveal) */
         .reveal {
-            visibility: hidden; /* Controlado pelo JS para animação */
+            visibility: hidden;
+            /* Controlado pelo JS para animação */
         }
 
         /* Ajustes de Tipografia */
-        .prose { color: var(--text-primary); }
-        .prose p {
-             color: var(--text-secondary);
-             margin-bottom: 1em;
-             line-height: 1.7;
+        .prose {
+            color: var(--text-primary);
         }
-        /* Cor do strong dentro do prose ajustada para maior destaque */
-        .prose strong { color: var(--text-primary); font-weight: 600; /* semibold */ }
+
+        .prose p {
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+            line-height: 1.7;
+        }
+
+        .prose strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
         /* Estilo customizado para o glow com filter */
         .image-glow {
-             filter: drop-shadow(0px 4px 15px rgba(34, 211, 238, 0.5));
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+            opacity: 0.3;
+            filter: blur(40px);
+            z-index: -1;
+            transition: all 0.5s ease;
         }
 
+        .hero-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-img {
+            max-width: 650px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(0, 150, 200, 0.4));
+        }
+
+        @media (max-width: 1024px) {
+            .hero-img {
+                max-width: 300px;
+            }
+        }
+
+        /* Interactive Highlights */
+        .highlight-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes pulse-focus {
+            0% {
+                background-color: transparent;
+            }
+
+            25% {
+                background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.6);
+                box-shadow: 0 0 20px rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+            }
+
+            50% {
+                background-color: transparent;
+            }
+
+            75% {
+                background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.6);
+                box-shadow: 0 0 20px rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        .pulse-focus {
+            animation: pulse-focus 4s ease-in-out 2;
+            border-radius: 8px;
+            padding: 4px;
+            margin: -4px;
+        }
     </style>
 </head>
+
 <body>
 
-    <header class="hero-background text-white shadow-lg">
-        <div class="hero-image-container reveal">
-            <img id="hero-photo" src="photo_transparent.png"
-                 alt="Foto de Eric Cruz"
-                 class="image-glow"
-                 style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: center center;"
-                 onerror="this.onerror=null; this.style.display='none'; console.error('Erro ao carregar hero-photo.');">
-        </div>
-        <div class="hero-content container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center">
-            <div class="md:w-2/3 text-center md:text-left reveal">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                    Eric Lima
-                </h1>
-                <p class="text-xl md:text-2xl font-medium mb-6 text-cyan-300" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-                    Tech Advisor | Liderança & Inovação em Software
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-lg text-gray-300">
-                    <span class="flex items-center">
-                        <i class="fa-solid fa-map-marker-alt text-cyan-400"></i> Arapiraca-AL, Brasil
-                    </span>
-                    <a href="mailto:ericcruz.prog@gmail.com" class="flex items-center hover:text-cyan-300 transition duration-300 group">
-                        <i class="fa-solid fa-envelope text-cyan-400 group-hover:animate-pulse"></i> ericcruz.prog@gmail.com
-                    </a>
-                    <span class="flex items-center">
-                        <i class="fa-solid fa-phone text-cyan-400"></i> (82) 99942-5883 / 99912-9431
-                    </span>
+    <nav class="top-nav">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="logo-box">EC</div>
+                <div class="hidden sm:block">
+                    <div class="text-sm font-bold text-white leading-tight">Eric Cruz Lima</div>
+                    <div class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">Available for hire</div>
                 </div>
-                 <div class="mt-8 flex justify-center md:justify-start space-x-5">
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon text-gray-400 hover:text-cyan-400">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon text-gray-400 hover:text-cyan-400">
-                         <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="Currículo ECHL.pdf" target="_blank" download="Curriculo_Eric_Cruz.pdf" aria-label="Baixar Currículo PDF" class="social-icon text-gray-400 hover:text-cyan-400">
-                        <i class="fa-solid fa-file-pdf"></i>
-                    </a>
-                    <a href="https://wa.me/5582999425883" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon text-gray-400 hover:text-cyan-400">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
+            </div>
+
+            <div class="toggle-wrapper">
+                <span id="label-dev" class="active">Engenharia (Dev)</span>
+                <label class="switch">
+                    <input type="checkbox" id="profile-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span id="label-cto">Gestão (CTO)</span>
+            </div>
+
+            <div>
+                <a href="#contato"
+                    class="text-white hover:text-cyan-400 transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                    <span class="hidden md:inline">Contatar</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-background relative overflow-hidden">
+        <div class="hero-glow"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="max-w-4xl lg:w-3/5">
+                    <div id="hero-badge" class="badge reveal">
+                        <i class="fa-solid fa-code text-xs"></i>
+                        <span id="hero-badge-text">Full Stack & GIS Specialist</span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-[1.1] reveal"
+                        style="text-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        Transformando Dados <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Complexos
+                            em
+                            <br> Soluções de Alto Impacto.</span>
+                    </h1>
+
+                    <p id="hero-description"
+                        class="text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl reveal">
+                        Desenvolvedor Sênior com <strong>+10 anos de experiência</strong> prática. Especialista em
+                        sistemas
+                        críticos, integração <strong>GIS (Geoprocessamento)</strong>, Docker e Cloud. Eu construo o que
+                        funciona no mundo real.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 reveal">
+                        <a href="Currículo ECHL.pdf" target="_blank" download="Curriculo_Eric_Cruz.pdf"
+                            class="btn-primary">
+                            <i class="fa-solid fa-download"></i>
+                            Baixar CV Completo
+                        </a>
+                        <a href="https://wa.me/5582999425883" target="_blank" class="btn-secondary">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Agendar Conversa
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 flex justify-center lg:justify-end reveal mt-12 lg:mt-0">
+                    <div class="hero-image-container">
+                        <div class="image-glow"></div>
+                        <img src="photo_transparent.png" alt="Eric Cruz Lima" class="hero-img">
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <div class="highlights-section reveal">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="highlight-item" data-target="experiencia">
+                    <h3 class="text-white">10+ Anos</h3>
+                    <p>Experiência de Campo</p>
+                </div>
+                <div class="highlight-item" data-target="target-top3">
+                    <h3 class="text-cyan-400">Top 3</h3>
+                    <p>MundoGeo Connect (LATAM)</p>
+                </div>
+                <div class="highlight-item" data-target="target-sigmin">
+                    <h3 class="text-blue-500">SIGMIN</h3>
+                    <p>Sistema de gestão para Mineração</p>
+                </div>
+                <div class="highlight-item" data-target="target-cto">
+                    <h3 class="text-white">CTO</h3>
+                    <p>Liderança de Equipes de tech</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="philosophy-grid container mx-auto px-6 reveal">
+        <div class="philosophy-card">
+            <h4>Filosofia de Trabalho</h4>
+            <div class="space-y-4">
+                <div class="philosophy-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p><strong>Pragmatismo:</strong> Código bonito é código que resolve o problema do cliente e escala.
+                    </p>
+                </div>
+                <div class="philosophy-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p><strong>Autodidata:</strong> Aprendo rápido. Da documentação à implementação em dias, não meses.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="container mx-auto px-6 py-16">
 
         <section id="sobre" class="mb-20 reveal">
-             <h2 class="section-title">Sobre Mim</h2>
-             <div class="prose max-w-none text-lg">
-                 <p>
-                     Trago mais de 10 anos de experiência nos setores público e privado, construindo um sólido background técnico em desenvolvimento, dados e infraestrutura. Essa trajetória culminou na minha recente atuação como <strong>Diretor de Tecnologia (CTO)</strong>, onde combino expertise técnica com <strong>liderança estratégica</strong> focada em resultados.
-                 </p>
-                 <p>
-                    Minha jornada evoluiu do operacional para o gerencial, capacitando-me a <strong>construir e liderar equipes de alta performance</strong>. Sou apaixonado por definir roadmaps tecnológicos alinhados ao negócio e implementar soluções inovadoras — Cloud, BI, Processos Ágeis — sempre com pragmatismo e foco na execução. Atuei em ambientes de <strong>alta confidencialidade</strong>, garantindo segurança e eficiência.
-                 </p>
-                 <p>
-                    Possuo <strong>inglês avançado</strong> (leitura, escrita e conversação técnica/coloquial), facilitando a colaboração em projetos globais.
-                 </p>
-             </div>
+            <h2 class="section-title">Sobre Mim</h2>
+            <div id="about-content" class="prose max-w-none text-lg transition-all duration-300">
+                <p>
+                    Trago mais de 10 anos de experiência nos setores público e privado, construindo um sólido background
+                    técnico em desenvolvimento, dados e infraestrutura. Essa trajetória culminou na minha recente
+                    atuação como <strong>Diretor de Tecnologia (CTO)</strong>, onde combino expertise técnica com
+                    <strong>liderança estratégica</strong> focada em resultados.
+                </p>
+            </div>
         </section>
         <section id="experiencia" class="mb-20 reveal">
             <h2 class="section-title">Experiência Profissional</h2>
             <div class="timeline mt-8">
-                <div class="timeline-item reveal"> <span class="timeline-label">Startup</span> <div class="timeline-point"></div> <h3 class="text-xl font-semibold mb-1">Diretor de Tecnologia (CTO)</h3> <p class="text-md font-medium mb-1">ANDHE ACADEMIA NACIONAL DE DESENV. HUMANO E ECOLÓGICO</p> <p class="text-sm mb-3">2024 - 2025</p> <ul class="list-disc text-sm space-y-2"> <li>Definição da estratégia e roadmap de produtos tecnológicos, alinhando ideias da equipe com os objetivos centrais e a viabilidade técnica/mercadológica.</li> <li>Coordenação das equipes de desenvolvimento e produção, assegurando o fluxo de entrega contínua e a manutenção da qualidade dos produtos tecnológicos.</li> <li>Capacitação das equipes (gerencial e operacional) em ferramentas e práticas de gestão de projetos (ex: JIRA) para otimizar o fluxo de trabalho e a comunicação.</li> </ul> </div>
-                <div class="timeline-item reveal"> <span class="timeline-label">Empreend.</span> <div class="timeline-point"></div> <h3 class="text-xl font-semibold mb-1">Consultor Técnico</h3> <p class="text-md font-medium mb-1">Autônomo</p> <p class="text-sm mb-3">2022 - 2024</p> <ul class="list-disc text-sm space-y-2"> <li>Empreendimento e formação de portfólio, Ao atuar independentemente em operação e consultorias, prezando pela qualidade e bom relacionamento com clientes;</li> </ul> </div>
-                <div class="timeline-item reveal"> <span class="timeline-label">Indústria</span> <div class="timeline-point"></div> <h3 class="text-xl font-semibold mb-1">Analista de Processos e Sistemas Pleno</h3> <p class="text-md font-medium mb-1">MINERAÇÃO VALE VERDE DO BRASIL LTDA</p> <p class="text-sm mb-3">2018 - 2022</p> <ul class="list-disc text-sm space-y-2"> <li>Sistema integrado de gestão na Mineração (SIGMIN), Ao proporcionar extensiva coleta e integração de dados multidisciplinares, com foco em agilidade, tomada de decisão e auditabilidade dos dados;</li> <li>Disseminação da Cultura de Business Intelligence (B.I.): Por meio de pesquisa e implantação de soluções em Microsoft PowerBl;</li> <li>Disseminação da Cultura de Notação de Processos (BPMN): Trazendo resultados e demonstrações que contribuíram para o reconhecimento da plataforma como um valor substancial para a produtividade;</li> <li>Implantação de infraestruturas de Sistemas e Serviços em nuvem: De forma autônoma, toda a implantação da infraestrutura de Cloud e Software necessária à plena função dos sistemas, Banco de dados e containers da Plataforma SIGMIN e demais soluções vinculadas;</li> <li>Referências linguisticas pontuais (inglês e suportes em serviços internacionais por meio de voz e e-mail).</li> </ul> </div>
-                <div class="timeline-item reveal"> <span class="timeline-label">Público</span> <div class="timeline-point"></div> <h3 class="text-xl font-semibold mb-1">Técnico de Geoprocessamento / Desenvolvedor</h3> <p class="text-md font-medium mb-1">PREFEITURA MUNICIPAL DE ARAPIRACA</p> <p class="text-sm mb-3">2014 - 2018</p> <ul class="list-disc text-sm space-y-2"> <li>Atualização da base digital do cadastro municipal para um Banco de dados geográfico quadridimensional utilizando software livre - Prefeitura de Arapiraca (2016);</li> <li>Apresentação de quadro finalista ficando entre os "Top 3" em gestão municipal na América Latina MundoGeo#Connect (2017);</li> <li>Abertura pública de um sistema de acompanhamento da tributação e arrecadação no município pela nuvem através de uma parceria entre as secretarias de Finanças e Desenvolvimento urbano - Prefeitura de Arapiraca (2017-2018);</li> </ul> </div>
+                <div class="timeline-item reveal"> <span class="timeline-label">Startup</span>
+                    <div class="timeline-point"></div>
+                    <h3 class="text-xl font-semibold mb-1">Diretor de Tecnologia (CTO)</h3>
+                    <p class="text-md font-medium mb-1">ANDHE ACADEMIA NACIONAL DE DESENV. HUMANO E ECOLÓGICO</p>
+                    <p class="text-sm mb-3">2024 - 2025</p>
+                    <ul class="list-disc text-sm space-y-2">
+                        <li id="target-cto" class="cto-highlight">Definição da estratégia e roadmap de produtos
+                            tecnológicos, alinhando
+                            ideias da equipe com
+                            os objetivos centrais e a viabilidade técnica/mercadológica.</li>
+                        <li class="cto-highlight">Coordenação das equipes de desenvolvimento e produção, assegurando o
+                            fluxo de entrega
+                            contínua e a manutenção da qualidade dos produtos tecnológicos.</li>
+                        <li>Capacitação das equipes (gerencial e operacional) em ferramentas e práticas de gestão de
+                            projetos (ex: JIRA) para otimizar o fluxo de trabalho e a comunicação.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item reveal"> <span class="timeline-label">Empreend.</span>
+                    <div class="timeline-point"></div>
+                    <h3 class="text-xl font-semibold mb-1">Consultor Técnico</h3>
+                    <p class="text-md font-medium mb-1">Autônomo</p>
+                    <p class="text-sm mb-3">2022 - 2024</p>
+                    <ul class="list-disc text-sm space-y-2">
+                        <li>Empreendimento e formação de portfólio, Ao atuar independentemente em operação e
+                            consultorias, prezando pela qualidade e bom relacionamento com clientes;</li>
+                    </ul>
+                </div>
+                <div class="timeline-item reveal"> <span class="timeline-label">Indústria</span>
+                    <div class="timeline-point"></div>
+                    <h3 class="text-xl font-semibold mb-1">Analista de Processos e Sistemas Pleno</h3>
+                    <p class="text-md font-medium mb-1">MINERAÇÃO VALE VERDE DO BRASIL LTDA</p>
+                    <p class="text-sm mb-3">2018 - 2022</p>
+                    <ul class="list-disc text-sm space-y-2">
+                        <li id="target-sigmin" class="dev-highlight">Sistema integrado de gestão na Mineração (SIGMIN),
+                            Ao
+                            proporcionar
+                            extensiva coleta e
+                            integração de dados multidisciplinares, com foco em agilidade, tomada de decisão e
+                            auditabilidade dos dados;</li>
+                        <li>Disseminação da Cultura de Business Intelligence (B.I.): Por meio de pesquisa e implantação
+                            de soluções em Microsoft PowerBl;</li>
+                        <li class="cto-highlight">Disseminação da Cultura de Notação de Processos (BPMN): Trazendo
+                            resultados e demonstrações
+                            que contribuíram para o reconhecimento da plataforma como um valor substancial para a
+                            produtividade;</li>
+                        <li class="dev-highlight">Implantação de infraestruturas de Sistemas e Serviços em nuvem: De
+                            forma autônoma, toda a
+                            implantação da infraestrutura de Cloud e Software necessária à plena função dos sistemas,
+                            Banco de dados e containers da Plataforma SIGMIN e demais soluções vinculadas;</li>
+                        <li>Referências linguisticas pontuais (inglês e suportes em serviços internacionais por meio de
+                            voz e e-mail).</li>
+                    </ul>
+                </div>
+                <div class="timeline-item reveal"> <span class="timeline-label">Público</span>
+                    <div class="timeline-point"></div>
+                    <h3 class="text-xl font-semibold mb-1">Técnico de Geoprocessamento / Desenvolvedor</h3>
+                    <p class="text-md font-medium mb-1">PREFEITURA MUNICIPAL DE ARAPIRACA</p>
+                    <p class="text-sm mb-3">2014 - 2018</p>
+                    <ul class="list-disc text-sm space-y-2">
+                        <li class="dev-highlight">Atualização da base digital do cadastro municipal para um Banco de
+                            dados geográfico
+                            quadridimensional utilizando software livre - Prefeitura de Arapiraca (2016);</li>
+                        <li id="target-top3">Apresentação de quadro finalista ficando entre os "Top 3" em gestão
+                            municipal na América
+                            Latina MundoGeo#Connect (2017);</li>
+                        <li class="dev-highlight">Abertura pública de um sistema de acompanhamento da tributação e
+                            arrecadação no município
+                            pela nuvem através de uma parceria entre as secretarias de Finanças e Desenvolvimento urbano
+                            - Prefeitura de Arapiraca (2017-2018);</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section id="habilidades" class="mb-20 reveal">
             <h2 class="section-title">Hard Skills</h2>
             <div class="skills-container">
-                 <div class="skill-tag reveal"><i class="fa-solid fa-server"></i><span>Servidores Linux/Unix</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-solid fa-microchip"></i><span>IA
+                        (Inteligência
+                        Artificial)</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-solid fa-vr-cardboard"></i><span>VR /
+                        Realidade
+                        Virtual</span></div>
+                <div class="skill-tag reveal" data-priority="cto"><i class="fa-solid fa-robot"></i><span>Automação
+                        (N8N)</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-solid fa-server"></i><span>Servidores
+                        Linux/Unix</span></div>
                 <div class="skill-tag reveal"><i class="fa-solid fa-server"></i><span>Servidores Windows</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-cloud"></i><span>Cloud (AWS, Azure, GCP)</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-database"></i><span>Bancos de Dados SQL</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-map-location-dot"></i><span>PostgreSQL / PostGIS</span></div>
+                <div class="skill-tag reveal" data-priority="cto"><i class="fa-solid fa-cloud"></i><span>Cloud (AWS,
+                        Azure, GCP)</span>
+                </div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-solid fa-database"></i><span>Bancos de
+                        Dados SQL</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i
+                        class="fa-solid fa-map-location-dot"></i><span>PostgreSQL /
+                        PostGIS</span></div>
                 <div class="skill-tag reveal"><i class="fa-brands fa-php"></i><span>PHP</span></div>
                 <div class="skill-tag reveal"><i class="fa-brands fa-java"></i><span>Java</span></div>
-                <div class="skill-tag reveal"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-code"></i><span>TypeScript</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-brands fa-js"></i><span>JavaScript</span>
+                </div>
+                <div class="skill-tag reveal" data-priority="dev"><i
+                        class="fa-solid fa-code"></i><span>TypeScript</span></div>
                 <div class="skill-tag reveal"><i class="fa-solid fa-file-code"></i><span>HTML5 / CSS3</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-chart-bar"></i><span>Power BI</span></div>
+                <div class="skill-tag reveal" data-priority="cto"><i class="fa-solid fa-chart-bar"></i><span>Power
+                        BI</span></div>
                 <div class="skill-tag reveal"><i class="fa-solid fa-map-location-dot"></i><span>QGIS</span></div>
                 <div class="skill-tag reveal"><i class="fa-solid fa-globe"></i><span>MapServer / GeoServer</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-pencil-ruler"></i><span>AutoCAD / AutoLISP</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-diagram-project"></i><span>BPMN</span></div>
-                <div class="skill-tag reveal"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
-                <div class="skill-tag reveal"><i class="fa-brands fa-git-alt"></i><span>Git / GitHub</span></div>
-                <div class="skill-tag reveal"><i class="fa-solid fa-list-check"></i><span>Jira / Trello</span></div>
+                <div class="skill-tag reveal"><i class="fa-solid fa-pencil-ruler"></i><span>AutoCAD / AutoLISP</span>
                 </div>
+                <div class="skill-tag reveal" data-priority="cto"><i
+                        class="fa-solid fa-diagram-project"></i><span>BPMN</span></div>
+                <div class="skill-tag reveal" data-priority="dev"><i class="fa-brands fa-docker"></i><span>Docker</span>
+                </div>
+                <div class="skill-tag reveal"><i class="fa-brands fa-git-alt"></i><span>Git / GitHub</span></div>
+                <div class="skill-tag reveal" data-priority="cto"><i class="fa-solid fa-list-check"></i><span>Jira /
+                        Trello</span></div>
+            </div>
         </section>
 
         <section id="idiomas" class="mb-20 reveal">
             <h2 class="section-title">Idiomas</h2>
-            <div class="mt-6 text-left"> <p class="text-lg text-gray-300 flex items-center">
-                    <i class="fa-solid fa-language text-cyan-400 text-xl w-6 text-center"></i> <span class="ml-2"><strong>Inglês:</strong> Avançado (Leitura, escrita e conversação técnica/coloquial)</span>
+            <div class="mt-6 text-left">
+                <p class="text-lg text-gray-300 flex items-center">
+                    <i class="fa-solid fa-language text-cyan-400 text-xl w-6 text-center"></i> <span
+                        class="ml-2"><strong>Inglês:</strong> Avançado (Leitura, escrita e conversação
+                        técnica/coloquial)</span>
                 </p>
-                </div>
+            </div>
         </section>
 
         <section id="formacao" class="mb-20 reveal">
             <h2 class="section-title">Formação e Cursos</h2>
-             <div class="space-y-6 mt-8">
-                 <div class="education-card reveal">
-                     <h3 class="font-semibold text-lg mb-1">Ensino Médio Completo</h3>
-                     <p class="text-sm text-gray-400">Concluído</p>
-                 </div>
-                 <div class="education-card reveal">
+            <div class="space-y-6 mt-8">
+                <div class="education-card reveal">
+                    <h3 class="font-semibold text-lg mb-1">Ensino Médio Completo</h3>
+                    <p class="text-sm text-gray-400">Concluído</p>
+                </div>
+                <div class="education-card reveal">
                     <h3 class="font-semibold text-lg mb-3">Cursos e Atividades Relevantes</h3>
                     <ul class="list-disc list-inside space-y-2 pl-2 text-sm">
-                        <li>Participação: Simpósio de geotecnologia "<a href="https://dados.al.gov.br/catalogo/pt_BR/dataset/anais-do-3-geoalagoas-simposio-sobre-as-geotecnologias-e-geoinformacao-no-estado-de-alagoas-2015/resource/1565305e-9342-49fd-8dbf-3a20a6c4e446" target="_blank" rel="noopener noreferrer">GeoAlagoas</a>" – UNIT – Maceió/AL (2015);</li>
-                        <li>Co-ministrou curso de geoproces.: QGIS – <a href="https://ceca.ufal.br/pt-br/institucional/quem-somos" target="_blank" rel="noopener noreferrer">Centro de Ciências Agrárias (CECA/UFAL)</a> – Rio Largo/AL (2016);</li>
-                        <li>Participação: Congresso de geotecnologia "<a href="https://mundogeoconnect.com/" target="_blank" rel="noopener noreferrer">MundoGeo#Connect</a>" – São Paulo/SP (2017).</li>
-                        <li>Treinamento em Microsoft PowerBI – <a href="https://www.lmconsulting.com.br/" target="_blank" rel="noopener noreferrer">LMConsulting</a> – Craíbas/AL (2019).</li>
-                        <li>Virtualização de serviços em Containers “Docker” – <a href="https://www.alura.com.br/?utm_term=alura&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Institucional" target="_blank" rel="noopener noreferrer">ALURA</a> – Curso Remoto (2020).</li>
-                        <li>TypeScript: Evoluindo Seu Javascript – <a href="https://www.alura.com.br/?utm_term=alura&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Institucional" target="_blank" rel="noopener noreferrer">ALURA</a> – Curso Remoto (2020).</li>
-                        <li>Modelagem de Processos de Negócio: “BPMN” – <a href="https://dheka.com.br/sobre/clientes/" target="_blank" rel="noopener noreferrer">Dheka</a> – Curso Remoto (2020).</li>
+                        <li>Participação: Simpósio de geotecnologia "<a
+                                href="https://dados.al.gov.br/catalogo/pt_BR/dataset/anais-do-3-geoalagoas-simposio-sobre-as-geotecnologias-e-geoinformacao-no-estado-de-alagoas-2015/resource/1565305e-9342-49fd-8dbf-3a20a6c4e446"
+                                target="_blank" rel="noopener noreferrer">GeoAlagoas</a>" – UNIT – Maceió/AL (2015);
+                        </li>
+                        <li>Co-ministrou curso de geoproces.: QGIS – <a
+                                href="https://ceca.ufal.br/pt-br/institucional/quem-somos" target="_blank"
+                                rel="noopener noreferrer">Centro de Ciências Agrárias (CECA/UFAL)</a> – Rio Largo/AL
+                            (2016);</li>
+                        <li>Participação: Congresso de geotecnologia "<a href="https://mundogeoconnect.com/"
+                                target="_blank" rel="noopener noreferrer">MundoGeo#Connect</a>" – São Paulo/SP (2017).
+                        </li>
+                        <li>Treinamento em Microsoft PowerBI – <a href="https://www.lmconsulting.com.br/"
+                                target="_blank" rel="noopener noreferrer">LMConsulting</a> – Craíbas/AL (2019).</li>
+                        <li>Virtualização de serviços em Containers “Docker” – <a
+                                href="https://www.alura.com.br/?utm_term=alura&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Institucional"
+                                target="_blank" rel="noopener noreferrer">ALURA</a> – Curso Remoto (2020).</li>
+                        <li>TypeScript: Evoluindo Seu Javascript – <a
+                                href="https://www.alura.com.br/?utm_term=alura&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Institucional"
+                                target="_blank" rel="noopener noreferrer">ALURA</a> – Curso Remoto (2020).</li>
+                        <li>Modelagem de Processos de Negócio: “BPMN” – <a href="https://dheka.com.br/sobre/clientes/"
+                                target="_blank" rel="noopener noreferrer">Dheka</a> – Curso Remoto (2020).</li>
                     </ul>
-                 </div>
-             </div>
+                </div>
+            </div>
         </section>
 
         <section id="contato" class="contact-section text-center reveal">
             <h2 class="text-3xl font-bold mb-4 text-white">Vamos Conectar?</h2>
-            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Estou sempre aberto a novas oportunidades, projetos desafiadores e colaborações. Entre em contato!</p>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Estou sempre aberto a novas oportunidades, projetos
+                desafiadores e colaborações. Entre em contato!</p>
             <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-x-6 gap-y-5">
-                 <a href="mailto:ericcruz.prog@gmail.com" class="contact-button"><i class="fa-solid fa-envelope"></i> Enviar E-mail</a>
-                 <span class="contact-link text-lg font-medium"><i class="fa-solid fa-phone"></i> (82) 99942-5883 / 99912-9431</span>
-                 <div class="flex items-center gap-x-5">
-                     <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-link text-lg group"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                     <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-link text-lg group"><i class="fa-brands fa-github"></i> GitHub</a>
-                     <a href="https://wa.me/5582999425883" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="contact-link text-lg group"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                     <a href="Currículo ECHL.pdf" target="_blank" download="Curriculo_Eric_Cruz.pdf" aria-label="Baixar Currículo PDF" class="contact-link text-lg group"><i class="fa-solid fa-file-pdf"></i> Baixar CV (PDF)</a>
-                 </div>
+                <a href="mailto:ericcruz.prog@gmail.com" class="contact-button"><i class="fa-solid fa-envelope"></i>
+                    Enviar E-mail</a>
+                <span class="contact-link text-lg font-medium"><i class="fa-solid fa-phone"></i> (82) 99942-5883 /
+                    99912-9431</span>
+                <div class="flex items-center gap-x-5">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                        class="contact-link text-lg group"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                        class="contact-link text-lg group"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://wa.me/5582999425883" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp" class="contact-link text-lg group"><i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp</a>
+                    <a href="Currículo ECHL.pdf" target="_blank" download="Curriculo_Eric_Cruz.pdf"
+                        aria-label="Baixar Currículo PDF" class="contact-link text-lg group"><i
+                            class="fa-solid fa-file-pdf"></i> Baixar CV (PDF)</a>
+                </div>
             </div>
         </section>
 
@@ -280,14 +1025,13 @@
     <footer class="footer text-center">
         <div class="container mx-auto px-6">
             <p>&copy; <span id="currentYear"></span> Eric Cruz da Hora Lima. Todos os direitos reservados.</p>
-            <p class="text-sm mt-1">Desenvolvido com <a href="https://tailwindcss.com/" target="_blank" rel="noopener">Tailwind CSS</a> e <i class="fa-solid fa-heart text-red-500 animate-pulse"></i></p>
+            <p class="text-sm mt-1">Desenvolvido com <a href="https://tailwindcss.com/" target="_blank"
+                    rel="noopener">Tailwind CSS</a> e <i class="fa-solid fa-heart text-red-500 animate-pulse"></i></p>
         </div>
     </footer>
 
     <script>
-        // Adiciona listener para garantir que o DOM esteja pronto
-        document.addEventListener('DOMContentLoaded', function() {
-
+        document.addEventListener('DOMContentLoaded', function () {
             // Define Ano Atual no Rodapé
             const yearElement = document.getElementById('currentYear');
             if (yearElement) { yearElement.textContent = new Date().getFullYear(); }
@@ -302,29 +1046,12 @@
                     afterReset: function (el) { el.style.opacity = 0; el.style.visibility = 'visible'; }
                 });
 
-                // Animações Gerais para .reveal
                 sr.reveal('.reveal');
-
-                // Animações Específicas
-                sr.reveal('.hero-content h1', { origin: 'top', distance: '70px', delay: 200 });
-                sr.reveal('.hero-content p', { origin: 'bottom', delay: 400 });
-                sr.reveal('.hero-content .flex-wrap', { origin: 'bottom', delay: 500, interval: 100 });
-                sr.reveal('.hero-content .mt-8 a', { origin: 'bottom', delay: 600, interval: 100 });
-                sr.reveal('.hero-image-container', { delay: 100, duration: 1200 });
                 sr.reveal('.section-title', { origin: 'left', distance: '40px', delay: 200 });
-                sr.reveal('.prose p', { interval: 100 }); // Anima parágrafos do Sobre Mim
+                sr.reveal('.prose p', { interval: 100 });
                 sr.reveal('.timeline-item', { interval: 200, origin: 'left', distance: '40px' });
                 sr.reveal('.skill-tag', { interval: 60, origin: 'bottom', distance: '30px', scale: 0.95 });
-                sr.reveal('#idiomas p', { origin: 'bottom', distance: '30px', delay: 200 });
                 sr.reveal('.education-card', { interval: 150, origin: 'right', distance: '40px' });
-                sr.reveal('.contact-section .flex-col > *', { interval: 100, origin: 'bottom', distance: '30px' });
-
-            } else {
-                console.warn('ScrollReveal library not found. Making elements visible manually.');
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.style.visibility = 'visible';
-                    el.style.opacity = 1;
-                 });
             }
 
             // Smooth scroll para links internos
@@ -335,15 +1062,112 @@
                         const targetElement = document.querySelector(href);
                         if (targetElement) {
                             e.preventDefault();
-                            const offsetTop = targetElement.offsetTop - 60;
+                            const offsetTop = targetElement.offsetTop - 80; // Compensar fixed nav
                             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                         }
                     }
                 });
             });
 
-        }); // Fim do listener DOMContentLoaded
+            // Profile Toggle Logic
+            const toggle = document.getElementById('profile-toggle');
+            const heroBadgeText = document.getElementById('hero-badge-text');
+            const heroBadgeIcon = document.querySelector('#hero-badge i');
+            const heroDescription = document.getElementById('hero-description');
+            const aboutContent = document.getElementById('about-content');
+            const labelDev = document.getElementById('label-dev');
+            const labelCto = document.getElementById('label-cto');
+
+            const profileData = {
+                dev: {
+                    badge: "Full Stack & GIS Specialist",
+                    icon: "fa-code",
+                    description: "Desenvolvedor Sênior com <strong>+10 anos de experiência</strong> prática. Especialista em sistemas críticos, integração <strong>GIS (Geoprocessamento)</strong>, Docker e Cloud. Eu construo o que funciona no mundo real.",
+                    about: `<p>Trago mais de 10 anos de experiência prática, construindo arquiteturas sólidas de software e dados. Como especialista em <strong>Full Stack & GIS</strong>, meu foco é transformar requisitos complexos em sistemas escaláveis. Tenho um histórico de entregar soluções críticas em ambientes de alta complexidade e dados sensíveis.</p>`,
+                    accent: "#3b82f6"
+                },
+                cto: {
+                    badge: "Ex-CTO & Technical Leader",
+                    icon: "fa-user-tie",
+                    description: "Líder Técnico com histórico comprovado de gestão de times ágeis e entrega de produtos (do MVP à escala). Especialista em alinhar tecnologia com objetivos de negócio no setor Industrial e GovTech.",
+                    about: `<p>Como Diretor de Tecnologia (CTO), combino um sólido background técnico com <strong>liderança estratégica</strong> focada em resultados. Minha expertise está em construir times de alta performance, definir roadmaps tecnológicos que impulsionam o negócio e liderar a transformação digital.</p>`,
+                    accent: "#6366f1"
+                }
+            };
+
+            // Set Initial State
+            document.body.classList.add('profile-dev');
+
+            if (toggle) {
+                toggle.addEventListener('change', function () {
+                    const profile = this.checked ? 'cto' : 'dev';
+                    const data = profileData[profile];
+
+                    // Transition Main Sections
+                    heroDescription.classList.add('content-fading');
+                    heroBadgeText.parentElement.classList.add('content-fading');
+                    aboutContent.classList.add('content-fading');
+
+                    // Global Class Toggle
+                    document.body.classList.toggle('profile-cto', profile === 'cto');
+                    document.body.classList.toggle('profile-dev', profile === 'dev');
+
+                    setTimeout(() => {
+                        heroBadgeText.textContent = data.badge;
+                        heroBadgeIcon.className = `fa-solid ${data.icon} text-xs`;
+                        heroDescription.innerHTML = data.description;
+                        aboutContent.innerHTML = data.about;
+
+                        if (profile === 'cto') {
+                            labelCto.classList.add('active');
+                            labelDev.classList.remove('active');
+                            document.documentElement.style.setProperty('--accent-primary', profileData.cto.accent);
+                            document.documentElement.style.setProperty('--accent-secondary', '#818cf8'); // indigo 400
+                        } else {
+                            labelDev.classList.add('active');
+                            labelCto.classList.remove('active');
+                            document.documentElement.style.setProperty('--accent-primary', profileData.dev.accent);
+                            document.documentElement.style.setProperty('--accent-secondary', '#0ea5e9'); // ciano 500
+                        }
+
+                        heroDescription.classList.remove('content-fading');
+                        heroBadgeText.parentElement.classList.remove('content-fading');
+                        aboutContent.classList.remove('content-fading');
+                    }, 300);
+                });
+            }
+
+            // Highlight Anchors Logic
+            document.querySelectorAll('.highlight-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Smooth scroll - Using getBoundingClientRect to get absolute document position
+                        const rect = targetElement.getBoundingClientRect();
+                        const offsetTop = rect.top + window.scrollY - 120;
+
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+
+                        // Visual highlight effect
+                        targetElement.classList.remove('pulse-focus');
+                        void targetElement.offsetWidth; // Trigger reflow
+                        targetElement.classList.add('pulse-focus');
+
+                        // Remove pulse after animation completes (approx 4s total for 2 pulses)
+                        setTimeout(() => {
+                            targetElement.classList.remove('pulse-focus');
+                        }, 4000);
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
+
 </html>
