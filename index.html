@@ -34,6 +34,13 @@
             --dev-color: #3b82f6;
             --cto-color: #6366f1;
             /* indigo */
+            --accent-rgb: 59, 130, 246;
+        }
+
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
         }
 
         /* Estilos Globais */
@@ -58,15 +65,63 @@
 
         /* Toggle Switch Customization */
         .toggle-wrapper {
+            position: relative;
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg-dark);
             padding: 4px 16px;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.875rem;
             color: var(--text-secondary);
+            z-index: 1;
+        }
+
+        .toggle-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -1.5px;
+            padding: 1.5px;
+            border-radius: inherit;
+            background: conic-gradient(from var(--angle),
+                    transparent 0deg,
+                    var(--accent-primary) 90deg,
+                    var(--accent-secondary) 180deg,
+                    var(--accent-primary) 270deg,
+                    transparent 360deg);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: rotate-gradient 4s linear infinite;
+        }
+
+        .toggle-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            z-index: -1;
+            border-radius: inherit;
+            background: conic-gradient(from var(--angle),
+                    transparent 0deg,
+                    var(--accent-primary) 90deg,
+                    var(--accent-secondary) 180deg,
+                    var(--accent-primary) 270deg,
+                    transparent 360deg);
+            filter: blur(10px);
+            opacity: 0.4;
+            animation: rotate-gradient 4s linear infinite;
+        }
+
+        @keyframes rotate-gradient {
+            to {
+                --angle: 360deg;
+            }
         }
 
         .toggle-wrapper .active {
@@ -777,7 +832,8 @@
                             <i class="fa-solid fa-download"></i>
                             Baixar CV Completo
                         </a>
-                        <a href="https://wa.me/5582999425883" target="_blank" class="btn-secondary">
+                        <a href="https://wa.me/+5582999425883?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20seu%20Website.%20Gostaria%20de%20entrar%20em%20contato%20e%20discutir%20propostas.%20Quando%20poder%C3%ADamos%C2%A0conversar%3F"
+                            target="_blank" class="btn-secondary">
                             <i class="fa-brands fa-whatsapp"></i>
                             Agendar Conversa
                         </a>
@@ -1031,8 +1087,9 @@
                         class="contact-link text-lg group"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                     <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
                         class="contact-link text-lg group"><i class="fa-brands fa-github"></i> GitHub</a>
-                    <a href="https://wa.me/5582999425883" target="_blank" rel="noopener noreferrer"
-                        aria-label="WhatsApp" class="contact-link text-lg group"><i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://wa.me/+5582999425883?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20seu%20Website.%20Gostaria%20de%20entrar%20em%20contato%20e%20discutir%20propostas.%20Quando%20poder%C3%ADamos%C2%A0conversar%3F"
+                        target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                        class="contact-link text-lg group"><i class="fa-brands fa-whatsapp"></i>
                         WhatsApp</a>
                     <a href="Currículo ECHL.pdf" target="_blank" download="Curriculo_Eric_Cruz.pdf"
                         aria-label="Baixar Currículo PDF" class="contact-link text-lg group"><i
