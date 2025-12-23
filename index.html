@@ -1359,10 +1359,15 @@
                     toggle.removeEventListener('change', dismissHint);
                 };
 
-                // Dismiss on click, touch, keydown or toggle
+                // Dismiss on click, touch, keydown, resize or toggle
                 window.addEventListener('click', dismissHint);
                 window.addEventListener('touchstart', dismissHint);
+                window.addEventListener('touchmove', dismissHint);
+                window.addEventListener('touchend', dismissHint);
+                window.addEventListener('touchcancel', dismissHint);
                 window.addEventListener('keydown', dismissHint);
+                window.addEventListener('scroll', dismissHint);
+                window.addEventListener('resize', dismissHint);
                 toggle.addEventListener('change', dismissHint);
             }
         });
