@@ -1354,11 +1354,15 @@
                     localStorage.setItem('onboarding_shown', 'true');
                     // Clean up listeners
                     window.removeEventListener('click', dismissHint);
+                    window.removeEventListener('touchstart', dismissHint);
+                    window.removeEventListener('keydown', dismissHint);
                     toggle.removeEventListener('change', dismissHint);
                 };
 
-                // Dismiss on click or toggle
+                // Dismiss on click, touch, keydown or toggle
                 window.addEventListener('click', dismissHint);
+                window.addEventListener('touchstart', dismissHint);
+                window.addEventListener('keydown', dismissHint);
                 toggle.addEventListener('change', dismissHint);
             }
         });
