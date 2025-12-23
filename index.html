@@ -76,6 +76,8 @@
             font-size: 0.875rem;
             color: var(--text-secondary);
             z-index: 1;
+            cursor: pointer;
+            /* Clickable area */
         }
 
         .toggle-wrapper::before {
@@ -1238,6 +1240,7 @@
 
             // Profile Toggle Logic
             const toggle = document.getElementById('profile-toggle');
+            const toggleWrapper = document.querySelector('.toggle-wrapper');
             const heroBadgeText = document.getElementById('hero-badge-text');
             const heroBadgeIcon = document.querySelector('#hero-badge i');
             const heroDescription = document.getElementById('hero-description');
@@ -1266,6 +1269,15 @@
             document.body.classList.add('profile-dev');
 
             if (toggle) {
+                // Also toggle on wrapper click (for better accessibility)
+                if (toggleWrapper) {
+                    toggleWrapper.addEventListener('click', function (e) {
+                        if (e.target !== toggle && !e.target.closest('.slider')) {
+                            toggle.click();
+                        }
+                    });
+                }
+
                 toggle.addEventListener('change', function () {
                     const profile = this.checked ? 'cto' : 'dev';
                     const data = profileData[profile];
