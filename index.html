@@ -1359,15 +1359,12 @@
                     toggle.removeEventListener('change', dismissHint);
                 };
 
-                // Dismiss on click, touch, keydown, resize or toggle
+                // Dismiss on click, touch, keydown or toggle
                 window.addEventListener('click', dismissHint);
+                onboardingHint.addEventListener('click', dismissHint);
                 window.addEventListener('touchstart', dismissHint);
-                window.addEventListener('touchmove', dismissHint);
-                window.addEventListener('touchend', dismissHint);
-                window.addEventListener('touchcancel', dismissHint);
+                onboardingHint.addEventListener('touchstart', dismissHint);
                 window.addEventListener('keydown', dismissHint);
-                window.addEventListener('scroll', dismissHint);
-                window.addEventListener('resize', dismissHint);
                 toggle.addEventListener('change', dismissHint);
             }
         });
