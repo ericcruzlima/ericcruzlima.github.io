@@ -57,7 +57,8 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
+            z-index: 10000;
+            /* Higher than onboarding overlay */
             background: rgba(7, 11, 20, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -121,6 +122,81 @@
         @keyframes rotate-gradient {
             to {
                 --angle: 360deg;
+            }
+        }
+
+        /* Onboarding Hint */
+        #onboarding-hint {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(7, 11, 20, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            /* Move content to top */
+            padding-top: 25vh;
+            /* Lowered a bit to avoid "swallowing" arrow */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        #onboarding-hint.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .hint-content {
+            position: relative;
+            max-width: 400px;
+            text-align: center;
+            padding: 2rem;
+            color: #a855f7;
+            /* Purple to match the request */
+        }
+
+        .hint-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+            font-style: italic;
+            margin-top: 1rem;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .hint-subtext {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .hint-arrow-svg {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            /* Small gap from text */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 140px;
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+            animation: arrow-float 2s ease-in-out infinite;
+        }
+
+        @keyframes arrow-float {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(15px) rotate(0deg);
             }
         }
 
@@ -1052,7 +1128,7 @@
                                 target="_blank" rel="noopener noreferrer">GeoAlagoas</a>" – UNIT – Maceió/AL (2015);
                         </li>
                         <li>Co-ministrou curso de geoproces.: QGIS – <a
-                                href="https://ceca.ufal.br/pt-br/institucional/quem-somos" target="_blank"
+                                href="https://ceca.ufal.br/pt-br/institucional/quem-omos" target="_blank"
                                 rel="noopener noreferrer">Centro de Ciências Agrárias (CECA/UFAL)</a> – Rio Largo/AL
                             (2016);</li>
                         <li>Participação: Congresso de geotecnologia "<a href="https://mundogeoconnect.com/"
@@ -1099,6 +1175,19 @@
         </section>
 
     </main>
+
+    <!-- Onboarding Hint Overlay -->
+    <div id="onboarding-hint">
+        <div class="hint-content">
+            <!-- Curved arrow pointing UP -->
+            <svg class="hint-arrow-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 90C50 70 60 40 40 20M40 20L30 30M40 20L55 25" stroke="#a855f7" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="hint-text">Como melhor te atender?</div>
+            <div class="hint-subtext">Clique para alternar sua prioridade no topo</div>
+        </div>
+    </div>
 
     <footer class="footer text-center">
         <div class="container mx-auto px-6">
@@ -1243,6 +1332,35 @@
                     }
                 });
             });
+
+            // Onboarding Hint Logic
+            const onboardingHint = document.getElementById('onboarding-hint');
+            const aboutSection = document.getElementById('sobre');
+
+            if (onboardingHint && aboutSection && !localStorage.getItem('onboarding_shown')) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            onboardingHint.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(aboutSection);
+
+                const dismissHint = () => {
+                    onboardingHint.classList.remove('active');
+                    localStorage.setItem('onboarding_shown', 'true');
+                    // Clean up listeners
+                    window.removeEventListener('click', dismissHint);
+                    toggle.removeEventListener('change', dismissHint);
+                };
+
+                // Dismiss on click or toggle
+                window.addEventListener('click', dismissHint);
+                toggle.addEventListener('change', dismissHint);
+            }
         });
     </script>
 
