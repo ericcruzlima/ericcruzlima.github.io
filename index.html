@@ -844,6 +844,229 @@
             padding: 4px;
             margin: -4px;
         }
+
+        /* Seção de Cases (Projetos & Impacto) */
+        .case-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .case-card {
+                flex-direction: row;
+                height: 400px;
+            }
+
+            .case-card.reverse {
+                flex-direction: row-reverse;
+            }
+
+            .case-image {
+                width: 50%;
+                height: 100%;
+            }
+
+            .case-content {
+                width: 50%;
+                padding: 2.5rem;
+            }
+        }
+
+        .case-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .case-card:hover .case-image img {
+            transform: scale(1.05);
+        }
+
+        .case-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .case-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 99px;
+            background: rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(var(--accent-rgb, 59, 130, 246), 0.2);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .case-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .case-footer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.5rem;
+        }
+
+        .case-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .case-btn:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        /* Modal System */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 11, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--bg-medium);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 1rem;
+            right: 1rem;
+            float: right;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: var(--text-secondary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .modal-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Call-to-Action Footer Section */
+        .cta-footer-section {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .cta-footer-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-footer-text {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-fading {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 
@@ -982,6 +1205,70 @@
                 </p>
             </div>
         </section>
+        <section id="cases" class="mb-24 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <h2 class="section-title mb-0">Projetos & Impacto</h2>
+                </div>
+                <div class="text-slate-500 font-mono text-sm uppercase tracking-widest pb-2">
+                    Selected Works 2017-2024
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Case 1: SIGMIN -->
+                <article class="case-card reveal">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1000"
+                            alt="SIGMIN Dashboard">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-badge">Inovação</div>
+                        <h3 class="case-title">SIGMIN - Gestão Inteligente</h3>
+                        <p class="case-description">
+                            Sistema integrado de gestão para mineração que unifica coleta de dados multidisciplinares,
+                            proporcionando transparência e suporte crítico à tomada de decisão em tempo real.
+                        </p>
+                        <div class="case-footer">
+                            <a class="case-btn" onclick="openModal('sigmin-case')">
+                                <i class="fa-solid fa-eye"></i> Ver Case
+                            </a>
+                            <a class="case-btn" onclick="openModal('sigmin-tech')">
+                                <i class="fa-solid fa-code"></i> Tech Specs
+                            </a>
+                            <a class="case-btn" onclick="openModal('sigmin-team')">
+                                <i class="fa-solid fa-users"></i> Time / Referências
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 2: MundoGeo -->
+                <article class="case-card reverse reveal">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1000"
+                            alt="MundoGeo Connect Presentation">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-badge">Reconhecimento</div>
+                        <h3 class="case-title">MundoGeo Connect (Top 3)</h3>
+                        <p class="case-description">
+                            Projeto finalista em gestão municipal na América Latina, destacando-se pela inovação
+                            no uso de geotecnologias para transparência pública e eficiência administrativa.
+                        </p>
+                        <div class="case-footer">
+                            <a class="case-btn" onclick="openModal('mundogeo-case')">
+                                <i class="fa-solid fa-trophy"></i> Detalhes do Prêmio
+                            </a>
+                            <a class="case-btn" onclick="openModal('mundogeo-team')">
+                                <i class="fa-solid fa-users"></i> Time / Referências
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section id="experiencia" class="mb-20 reveal">
             <h2 class="section-title">Experiência Profissional</h2>
             <div class="timeline mt-8">
@@ -1106,12 +1393,48 @@
 
         <section id="idiomas" class="mb-20 reveal">
             <h2 class="section-title">Idiomas</h2>
-            <div class="mt-6 text-left">
-                <p class="text-lg text-gray-300 flex items-center">
-                    <i class="fa-solid fa-language text-cyan-400 text-xl w-6 text-center"></i> <span
-                        class="ml-2"><strong>Inglês:</strong> Avançado (Leitura, escrita e conversação
-                        técnica/coloquial)</span>
-                </p>
+            <div class="mt-6">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-language text-cyan-400 text-2xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Inglês: Fluente de verdade!</h3>
+                        <p class="text-gray-400 mb-4">Conhecimento aplicado ao ambiente técnico e corporativo, com foco
+                            em
+                            resultados práticos:</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Suporte Internacional:</strong> Atendimento direto a clientes estrangeiros
+                                    via voz e e-mail.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Aprendizado Ágil:</strong> Domínio completo de specs e sistemas sem
+                                    documentação em PT-BR.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Comunicação Executiva:</strong> Facilidade em negociações e definições
+                                    técnicas/coloquiais.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Autonomia Técnica:</strong> Consumo de cursos e certificações globais em
+                                    primeira mão.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Tradução de Requisitos:</strong> Ponte eficiente entre business global e
+                                    código técnico.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-300">
+                                <i class="fa-solid fa-check text-cyan-500 mt-1 text-sm"></i>
+                                <span><strong>Experiência em Cloud:</strong> Configuração de serviços internacionais de
+                                    suporte direto.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1119,8 +1442,17 @@
             <h2 class="section-title">Formação e Cursos</h2>
             <div class="space-y-6 mt-8">
                 <div class="education-card reveal">
-                    <h3 class="font-semibold text-lg mb-1">Ensino Médio Completo</h3>
-                    <p class="text-sm text-gray-400">Concluído</p>
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fa-solid fa-circle-check text-green-500"></i>
+                        <h3 class="font-semibold text-lg mb-0">Ensino Médio Completo</h3>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-xmark text-red-500"></i>
+                        <h3 class="font-semibold text-lg mb-0 text-gray-400">Ensino Superior (Incompleto)
+                            <a href="javascript:void(0)" onclick="openModal('edu-justification')"
+                                class="text-sm font-normal text-cyan-400 hover:underline ml-2">por quê?</a>
+                        </h3>
+                    </div>
                 </div>
                 <div class="education-card reveal">
                     <h3 class="font-semibold text-lg mb-3">Cursos e Atividades Relevantes</h3>
@@ -1151,6 +1483,14 @@
             </div>
         </section>
 
+        <section class="cta-footer-section reveal">
+            <h2 id="next-challenge">Pronto para o Próximo Desafio</h2>
+            <p class="cta-footer-text">
+                Atualmente baseado em Alagoas, disponível para posições remotas globais
+                ou consultoria local estratégica em Tecnologia e Gestão.
+            </p>
+        </section>
+
         <section id="contato" class="contact-section text-center reveal">
             <h2 class="text-3xl font-bold mb-4 text-white">Vamos Conectar?</h2>
             <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Estou sempre aberto a novas oportunidades, projetos
@@ -1178,6 +1518,18 @@
 
     </main>
 
+    <!-- Modal System -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-body" class="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Onboarding Hint Overlay -->
     <div id="onboarding-hint">
         <div class="hint-content">
@@ -1201,6 +1553,195 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Modal Case Data
+            const caseModals = {
+                'edu-justification': {
+                    title: 'Sobre minha Formação Acadêmica',
+                    content: `
+                        <div class="modal-text">
+                            <p>Minha trajetória em TI sempre foi muito pragmática. Tornei-me um analista reconhecido pelo mercado e pelos meus pares anos antes de sequer considerar ingressar em uma faculdade.</p>
+                            <p>Quando finalmente tive estabilidade para cursar o ensino superior, encontrei um cenário onde a grade curricular estava defasada em relação aos desafios que eu já resolvia diariamente no mundo real. A falta de estímulo e o ritmo acadêmico desconectado da velocidade da indústria me levaram a priorizar o aprendizado contínuo e autodidata, que sempre foi o motor da minha carreira.</p>
+                            <div class="p-4 bg-slate-800/50 border-l-4 border-cyan-500 rounded-r-xl mt-4">
+                                <p class="text-sm mb-0 italic text-slate-300">"Priorizei a experiência de campo e a resolução de problemas complexos, o que me trouxe a senioridade que possuo hoje. Não descarto um retorno à academia no futuro, desde que encontre um programa que de fato desafie meu patamar técnico."</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'sigmin-team': {
+                    title: 'Time & Referências - SIGMIN',
+                    content: `
+                        <div class="modal-text">
+                            <p>Trabalhei com profissionais incríveis que podem validar a qualidade técnica e o impacto deste projeto. Sinta-se à vontade para contatá-los:</p>
+                            <div class="space-y-4 mt-6">
+                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold leading-tight">Deyvson Santos</h4>
+                                            <p class="text-xs text-slate-400 uppercase tracking-wider">Supervisor de processos e Sistemas</p>
+                                        </div>
+                                    </div>
+                                    <a href="https://br.linkedin.com/in/deyvson-santos-33b82723" class="text-cyan-400 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold leading-tight">Janyel Barbosa</h4>
+                                            <p class="text-xs text-slate-400 uppercase tracking-wider">Analista de Processos e Sistemas Júnior</p>
+                                        </div>
+                                    </div>
+                                    <a href="https://github.com/tymaeusz" class="text-blue-400 hover:text-white transition"><i class="fa-brands fa-github text-xl"></i></a>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-green-400">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold leading-tight">Eric Lima</h4>
+                                            <p class="text-xs text-slate-400 uppercase tracking-wider">Analista de Processos e Sistemas Pleno</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                'mundogeo-team': {
+                    title: 'Time & Referências - MundoGeo',
+                    content: `
+                        <div class="modal-text">
+                            <p>Este reconhecimento foi fruto de um trabalho colaborativo intenso na gestão pública:</p>
+                            <div class="space-y-4 mt-6">
+                                <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold leading-tight">Rogério Firmino</h4>
+                                            <p class="text-xs text-slate-400 uppercase tracking-wider">Coordenador de TI em Geoprocessamento</p>
+                                        </div>
+                                    </div>
+                                    <a href="https://www.linkedin.com/in/rogerio-firmino-b81b34b3/" class="text-indigo-400 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-bold leading-tight">Julio Santos</h4>
+                                        <p class="text-xs text-slate-400 uppercase tracking-wider">Diretor de Departamento</p>
+                                    </div>
+                                </div>
+                                <a href="https://www.linkedin.com/in/juliocesarsantos-/" class="text-blue-400 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-green-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold leading-tight">Eric Lima</h4>
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider">Analista de Geoprocessamento</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                },
+                'sigmin-case': {
+                    title: 'SIGMIN - Detalhes do Impacto',
+                    content: `
+                        <div class="modal-text">
+                            <p>O <strong>SIGMIN</strong> foi desenvolvido para resolver um gargalo crítico: a fragmentação de dados em operações de mineração. Antes, informações geológicas, operacionais e administrativas viviam em silos.</p>
+                            <p><strong>Resultados Chave:</strong></p>
+                            <ul class="list-disc pl-5 space-y-2 mb-4">
+                                <li>Integração total de dados via PostgreSQL/PostGIS.</li>
+                                <li>Redução de 40% no tempo de geração de relatórios regulatórios.</li>
+                                <li>Dashboards em tempo real para tomada de decisão no campo.</li>
+                            </ul>
+                            <div class="aspect-video bg-slate-800 rounded-xl flex items-center justify-center mb-6">
+                                <i class="fa-solid fa-chart-line text-4xl text-cyan-400"></i>
+                                <span class="ml-4 text-slate-400">Placeholder para Demo/Vídeo</span>
+                            </div>
+                        </div>
+                    `
+                },
+                'sigmin-tech': {
+                    title: 'SIGMIN - Tech Specs',
+                    content: `
+                        <div class="modal-text">
+                            <p>Arquitetura robusta focada em integridade e performance:</p>
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                <div class="p-4 bg-slate-800 rounded-lg">
+                                    <h4 class="text-cyan-400 font-bold mb-1">Backend</h4>
+                                    <p class="text-sm">PHP / Noje.js</p>
+                                </div>
+                                <div class="p-4 bg-slate-800 rounded-lg">
+                                    <h4 class="text-cyan-400 font-bold mb-1">Geoprocessamento</h4>
+                                    <p class="text-sm">PostGIS / QGIS</p>
+                                </div>
+                                <div class="p-4 bg-slate-800 rounded-lg">
+                                    <h4 class="text-cyan-400 font-bold mb-1">Infra</h4>
+                                    <p class="text-sm">Docker / Linux / Cloud</p>
+                                </div>
+                                <div class="p-4 bg-slate-800 rounded-lg">
+                                    <h4 class="text-cyan-400 font-bold mb-1">Frontend</h4>
+                                    <p class="text-sm">Dashboard Interativo</p>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                'mundogeo-case': {
+                    title: 'MundoGeo Connect - Top 3 LATAM',
+                    content: `
+                        <div class="modal-text">
+                            <p>Reconhecimento internacional pela implementação de um sistema de acompanhamento tributário e geográfico para a Prefeitura de Arapiraca.</p>
+                            <p>O projeto foi selecionado entre centenas de casos de sucesso na América Latina, destacando-se pela <strong>eficiência na arrecadação</strong> e <strong>transparência pública</strong>.</p>
+                            <div class="p-6 bg-cyan-950/30 border border-cyan-500/20 rounded-xl mt-4">
+                                <i class="fa-solid fa-quote-left text-cyan-500 mb-2"></i>
+                                <p class="italic">"A transformação digital da base cadastral permitiu que o município visualizasse seu crescimento em 4 dimensões (espaço e tempo)."</p>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            // Global Modal Functions
+            window.openModal = function (caseId) {
+                const modalData = caseModals[caseId];
+                if (!modalData) return;
+
+                const body = document.getElementById('modal-body');
+                body.innerHTML = `
+                    <h2 class="modal-title">${modalData.title}</h2>
+                    ${modalData.content}
+                `;
+
+                document.getElementById('modal-overlay').classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            };
+
+            window.closeModal = function (e) {
+                document.getElementById('modal-overlay').classList.remove('active');
+                document.body.style.overflow = ''; // Restore scroll
+            };
+
+            // Close on Escape key
+            window.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
             // Define Ano Atual no Rodapé
             const yearElement = document.getElementById('currentYear');
             if (yearElement) { yearElement.textContent = new Date().getFullYear(); }
