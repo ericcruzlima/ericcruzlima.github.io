@@ -313,6 +313,13 @@
             transform: scale(1.05);
         }
 
+        /* Ensure highlighted skills have proper contrast on hover */
+        .profile-cto .skill-tag[data-priority="cto"]:hover,
+        .profile-dev .skill-tag[data-priority="dev"]:hover {
+            background-color: var(--accent-primary);
+            color: var(--bg-dark);
+        }
+
         /* Hero Section Redesign */
         .hero-background {
             background-color: var(--bg-dark);
@@ -1219,12 +1226,12 @@
                 <!-- Case 1: SIGMIN -->
                 <article class="case-card reveal">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1000"
+                        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&q=80&w=1000"
                             alt="SIGMIN Dashboard">
                     </div>
                     <div class="case-content">
                         <div class="case-badge">Inovação</div>
-                        <h3 class="case-title">SIGMIN - Gestão Inteligente</h3>
+                        <h3 class="case-title">Gestão Inteligente - BPMN/BI</h3>
                         <p class="case-description">
                             Sistema integrado de gestão para mineração que unifica coleta de dados multidisciplinares,
                             proporcionando transparência e suporte crítico à tomada de decisão em tempo real.
@@ -1246,8 +1253,7 @@
                 <!-- Case 2: MundoGeo -->
                 <article class="case-card reverse reveal">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1000"
-                            alt="MundoGeo Connect Presentation">
+                        <img src="geoweb.png" alt="MundoGeo Connect Presentation">
                     </div>
                     <div class="case-content">
                         <div class="case-badge">Reconhecimento</div>
@@ -1561,8 +1567,8 @@
                         <div class="modal-text">
                             <p>Minha trajetória em TI sempre foi muito pragmática. Tornei-me um analista reconhecido pelo mercado e pelos meus pares anos antes de sequer considerar ingressar em uma faculdade.</p>
                             <p>Quando finalmente tive estabilidade para cursar o ensino superior, encontrei um cenário onde a grade curricular estava defasada em relação aos desafios que eu já resolvia diariamente no mundo real. A falta de estímulo e o ritmo acadêmico desconectado da velocidade da indústria me levaram a priorizar o aprendizado contínuo e autodidata, que sempre foi o motor da minha carreira.</p>
-                            <div class="p-4 bg-slate-800/50 border-l-4 border-cyan-500 rounded-r-xl mt-4">
-                                <p class="text-sm mb-0 italic text-slate-300">"Priorizei a experiência de campo e a resolução de problemas complexos, o que me trouxe a senioridade que possuo hoje. Não descarto um retorno à academia no futuro, desde que encontre um programa que de fato desafie meu patamar técnico."</p>
+                            <div class="p-4 bg-slate-800/50 border-l-4 border-cyan-500 rounded-r-xl mt-4 pb-1">
+                                <p class="text-sm mb-0 italic text-slate-300">"Priorizei a experiência de campo e a resolução de problemas complexos, o que me trouxe a senioridade que possuo hoje. <b>Não descarto um retorno à academia no futuro</b>, desde que encontre um programa que de fato desafie meu patamar técnico."</p>
                             </div>
                         </div>
                     `
@@ -1634,7 +1640,7 @@
                             <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-white/5">
                                 <div class="flex items-center gap-4">
                                     <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-user-tie"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-white font-bold leading-tight">Julio Santos</h4>
@@ -1666,12 +1672,13 @@
                             <p><strong>Resultados Chave:</strong></p>
                             <ul class="list-disc pl-5 space-y-2 mb-4">
                                 <li>Integração total de dados via PostgreSQL/PostGIS.</li>
-                                <li>Redução de 40% no tempo de geração de relatórios regulatórios.</li>
-                                <li>Dashboards em tempo real para tomada de decisão no campo.</li>
+                                <li>Redução no tempo de geração de relatórios regulatórios.</li>
+                                <li>Dashboards em tempo real para tomada de decisão.</li>
+                                <li>Disseminação das culturas de Business Intelligence e de processos BPMN automatizados e flexíveis.</li>
                             </ul>
                             <div class="aspect-video bg-slate-800 rounded-xl flex items-center justify-center mb-6">
                                 <i class="fa-solid fa-chart-line text-4xl text-cyan-400"></i>
-                                <span class="ml-4 text-slate-400">Placeholder para Demo/Vídeo</span>
+                                <span class="ml-4 text-slate-400">Placeholder para Testimonials/Video</span>
                             </div>
                         </div>
                     `
@@ -1684,7 +1691,7 @@
                             <div class="grid grid-cols-2 gap-4 mt-4">
                                 <div class="p-4 bg-slate-800 rounded-lg">
                                     <h4 class="text-cyan-400 font-bold mb-1">Backend</h4>
-                                    <p class="text-sm">PHP / Noje.js</p>
+                                    <p class="text-sm">Java / Spring Boot</p>
                                 </div>
                                 <div class="p-4 bg-slate-800 rounded-lg">
                                     <h4 class="text-cyan-400 font-bold mb-1">Geoprocessamento</h4>
@@ -1692,11 +1699,11 @@
                                 </div>
                                 <div class="p-4 bg-slate-800 rounded-lg">
                                     <h4 class="text-cyan-400 font-bold mb-1">Infra</h4>
-                                    <p class="text-sm">Docker / Linux / Cloud</p>
+                                    <p class="text-sm">Docker / Linux / AWS Cloud</p>
                                 </div>
                                 <div class="p-4 bg-slate-800 rounded-lg">
                                     <h4 class="text-cyan-400 font-bold mb-1">Frontend</h4>
-                                    <p class="text-sm">Dashboard Interativo</p>
+                                    <p class="text-sm">Dashboard Interativo / ERP / BPMN</p>
                                 </div>
                             </div>
                         </div>
@@ -1707,10 +1714,11 @@
                     content: `
                         <div class="modal-text">
                             <p>Reconhecimento internacional pela implementação de um sistema de acompanhamento tributário e geográfico para a Prefeitura de Arapiraca.</p>
-                            <p>O projeto foi selecionado entre centenas de casos de sucesso na América Latina, destacando-se pela <strong>eficiência na arrecadação</strong> e <strong>transparência pública</strong>.</p>
+                            <p>O projeto foi selecionado entre diversos outros casos de sucesso na América Latina, destacando-se pela <strong>eficiência na arrecadação</strong> e <strong>transparência pública</strong>.</p>
                             <div class="p-6 bg-cyan-950/30 border border-cyan-500/20 rounded-xl mt-4">
                                 <i class="fa-solid fa-quote-left text-cyan-500 mb-2"></i>
                                 <p class="italic">"A transformação digital da base cadastral permitiu que o município visualizasse seu crescimento em 4 dimensões (espaço e tempo)."</p>
+                                <a href="https://mundogeoconnect.com/2017/premio-mundogeoconnect-projetos/#:~:text=%E2%80%A2%C2%A0Cria%C3%A7%C3%A3o%20de%20um%20Sistema%20de%20Informa%C3%A7%C3%B5es%20Geogr%C3%A1ficas%20para%20mapeamento%20colaborativo%20utilizando%20software%20livre%20%E2%80%93%20Rog%C3%A9rio%20Firmino%2C%20J%C3%BAlio%20Santos%2C%20Eric%20Cruz%20(Prefeitura%20Municipal%20de%20Arapiraca)" target="_blank" class="text-cyan-400 hover:text-white transition">Clique aqui para ver mais sobre a premiação nos anais do evento</a>
                             </div>
                         </div>
                     `
